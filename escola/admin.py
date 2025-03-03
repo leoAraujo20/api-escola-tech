@@ -4,7 +4,7 @@ from escola.models import Estudante, Curso
 class EstudanteAdmin(admin.ModelAdmin):
     list_display = ('id','nome', 'email', 'cpf', 'data_nascimento', 'celular',)
     list_display_links = ('id', 'nome',)
-    search_fields = ('nome',)
+    search_fields = ('nome', 'cpf')
     list_per_page = 20
 
 admin.site.register(Estudante, EstudanteAdmin)
