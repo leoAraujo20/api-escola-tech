@@ -16,7 +16,7 @@ Esta é a API do projeto Escola Tech, que fornece funcionalidades para gerenciar
 ## Instalação
 1. Clone o repositório:
     ```bash
-    git clone https://github.com/seu-usuario/api-escola-tech.git
+    git clone https://github.com/leoAraujo20/api-escola-tech.git
     ```
 2. Crie e ative um ambiente virtual:
     ```bash
