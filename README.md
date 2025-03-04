@@ -1,7 +1,7 @@
 # API Escola Tech
 
 ## Descrição
-Esta é a API do projeto Escola Tech, que fornece funcionalidades para gerenciar informações de uma escola de tecnologia.
+Esta é uma API criada com Django REST Framework, que fornece funcionalidades para gerenciar informações de uma escola de tecnologia.
 
 ## Funcionalidades
 - Cadastro de alunos
