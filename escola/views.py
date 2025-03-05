@@ -5,7 +5,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.throttling import UserRateThrottle
 from escola.throttles import MatriculaAnonRateThrottle
 
-
 class EstudanteViewSet(viewsets.ModelViewSet):
     queryset = Estudante.objects.all().order_by('id')
     serializer_class = EstudanteSerializer
@@ -26,6 +25,7 @@ class MatriculaViewSet(viewsets.ModelViewSet):
     throttle_classes = [UserRateThrottle, MatriculaAnonRateThrottle]
     queryset = Matricula.objects.all()
     serializer_class = MatriculaSerializer
+    http_method_names = ['get','post',]
 
 class ListaMatriculasEstudante(generics.ListAPIView):
     def get_queryset(self):
