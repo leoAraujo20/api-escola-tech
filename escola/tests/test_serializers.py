@@ -76,7 +76,6 @@ class MatriculaSerializerTestCase(TestCase):
     
     def test_verifica_dados_serializados_matricula(self):
         data = self.serializer.data
-        print(data)
         self.assertEqual(data['estudante'], self.estudante.id)
         self.assertEqual(data['curso'], self.curso.id)
         self.assertEqual(data['periodo'], self.matricula.periodo)
