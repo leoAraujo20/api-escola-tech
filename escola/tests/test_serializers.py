@@ -48,7 +48,7 @@ class CursoSerializerTestCase(TestCase):
 
 class MatriculaSerializerTestCase(TestCase):
     def setUp(self):
-        self.estudante = Estudante(
+        self.estudante = Estudante.objects.create(
             nome='João da Silva',
             email='joaosilva@gmail.com',
             cpf='68195899056',
@@ -56,13 +56,13 @@ class MatriculaSerializerTestCase(TestCase):
             celular='86 99999-9999'
         )
 
-        self.curso = Curso(
+        self.curso = Curso.objects.create(
             codigo='CTT1',
             descricao='Curso de Teste',
             nivel='I'
         )
 
-        self.matricula = Matricula(
+        self.matricula = Matricula.objects.create(
             estudante=self.estudante,
             curso=self.curso,
             periodo='N'
@@ -76,7 +76,8 @@ class MatriculaSerializerTestCase(TestCase):
     
     def test_verifica_dados_serializados_matricula(self):
         data = self.serializer.data
-        print(data['curso'])
+        print(data)
         self.assertEqual(data['estudante'], self.estudante.id)
         self.assertEqual(data['curso'], self.curso.id)
         self.assertEqual(data['periodo'], self.matricula.periodo)
+
