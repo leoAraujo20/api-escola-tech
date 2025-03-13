@@ -60,3 +60,7 @@ class EstudantesTestCase(APITestCase):
         }
         response = self.client.put(f'{self.url}1/', data=data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_remover_estudante(self):
+        response = self.client.delete(f'{self.url}1/')
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
