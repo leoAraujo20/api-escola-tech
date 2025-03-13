@@ -14,6 +14,7 @@ class EstudanteSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({'nome': 'O nome so pode conter letras'})
         if celular_invalido(data['celular']):
             return serializers.ValidationError({'celular': 'O celular informado não é válido'})
+        return data
     
 class CursoSerializer(serializers.ModelSerializer):
     class Meta:
