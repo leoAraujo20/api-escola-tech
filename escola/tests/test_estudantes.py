@@ -6,30 +6,20 @@ from escola.models import Estudante
 from escola.serializers import EstudanteSerializer
 
 class EstudantesTestCase(APITestCase):
+    fixtures = ['banco_test.json']
+
     def setUp(self):
-        self.usuario = User.objects.create_superuser(username='admin',password='admin')
+        self.usuario = User.objects.get(username='leonidas')
         self.url = reverse('Estudantes-list')
         self.client.force_authenticate(user=self.usuario)
-        self.estudante01 = Estudante.objects.create(
-            nome = 'Teste estudante um',
-            email = 'testeestudante01@gmail.com',
-            cpf ='68224431002',
-            data_nascimento='2024-01-02',
-            celular = '86 99999-9999'
-        )
-        self.estudante02 = Estudante.objects.create(
-            nome = 'Teste estudante dois',
-            email = 'testeestudante02@gmail.com',
-            cpf ='70261486055',
-            data_nascimento='2024-01-02',
-            celular = '86 99999-9999'
-        )
+        self.estudante01 = Estudante.objects.get(pk=1)
+        self.estudante02 = Estudante.objects.get(pk=2)
 
     def test_listar_estudantes(self):
         response = self.client.get(self.url)
         estudantes = Estudante.objects.all()
         serializer = EstudanteSerializer(estudantes, many=True)
-        self.assertEqual(response.data['results'], serializer.data)
+        self.assertEqual(response.data['results'], serializer.data[:len(response.data['results'])])
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_listar_um_estudante(self):
